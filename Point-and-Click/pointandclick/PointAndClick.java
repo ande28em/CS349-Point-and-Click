@@ -14,6 +14,16 @@ public class PointAndClick
 {
 
   JFrame frame;
+  
+  public PointAndClick()
+  {
+    // TODO
+  }
+  
+  public void init() {
+    
+  }
+  
 
   /**
    * Main method.
@@ -25,11 +35,6 @@ public class PointAndClick
   {
     // TODO Auto-generated method stub
     //test comment
-  }
-
-  public PointAndClick()
-  {
-    // TODO
   }
 
 }
