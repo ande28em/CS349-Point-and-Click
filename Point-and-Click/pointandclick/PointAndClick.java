@@ -21,7 +21,7 @@ public class PointAndClick
   }
   
   public void init() {
-    
+    System.out.println("test");
   }
   
 
