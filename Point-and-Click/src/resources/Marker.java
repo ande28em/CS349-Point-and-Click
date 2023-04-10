@@ -1,4 +1,4 @@
-package resources;
+package src.resources;
 
 /**
  * Marker.java - Marker for resources.

@@ -1,4 +1,6 @@
-package pointandclick;
+package src.pointandclick;
+
+import javax.swing.JFrame;
 
 /**
  * PointAndClick.java - Main class to start the CS349 point and click game.
@@ -11,6 +13,8 @@ package pointandclick;
 public class PointAndClick
 {
 
+  JFrame frame;
+
   /**
    * Main method.
    *
@@ -20,8 +24,11 @@ public class PointAndClick
   public static void main(final String[] args)
   {
     // TODO Auto-generated method stub
-    //test comment
+  }
 
+  public PointAndClick()
+  {
+    // TODO
   }
 
 }
