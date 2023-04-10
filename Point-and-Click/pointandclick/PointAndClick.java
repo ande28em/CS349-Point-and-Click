@@ -96,14 +96,14 @@ public class PointAndClick implements Runnable, ActionListener
 
     //code I wrote for another of my projects; to be edited to fit this one later 
     
-//    if (actionCommand.equals(MEAL))
-//    {
-//
-//      MealEditor.main(null);
-//
-//      return;
-//    }
-//
+    if (actionCommand.equals("Exit"))
+    {
+
+      System.exit(0);
+
+      return;
+    }
+
 //    if (actionCommand.equals(RECIPE))
 //    {
 //
