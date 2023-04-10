@@ -28,6 +28,4 @@ hs_err_pid*
 *.settings
 LICENSE.md
 README.md
-/src/
-/pointandclick/
-/resources/
+/bin/
