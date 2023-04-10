@@ -1,4 +1,4 @@
-package src.pointandclick;
+package pointandclick;
 
 import javax.swing.JFrame;
 

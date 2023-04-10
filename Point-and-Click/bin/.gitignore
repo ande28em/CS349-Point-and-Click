@@ -29,3 +29,5 @@ hs_err_pid*
 LICENSE.md
 README.md
 /src/
+/pointandclick/
+/resources/
