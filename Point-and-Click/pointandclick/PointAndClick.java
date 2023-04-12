@@ -74,9 +74,8 @@ public class PointAndClick implements Runnable, ActionListener
 
     exit.setMnemonic(KeyEvent.VK_Q); // menu must first be open
 
-    frame.setSize(400, 250);
+    frame.setSize(720, 780);
     contentPane.setBackground(Color.GRAY);
-    // menuBar.setBackground(Color.GRAY);
     frame.setBackground(Color.GRAY);
 
     frame.setVisible(true);
