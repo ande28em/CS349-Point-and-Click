@@ -1,4 +1,4 @@
-package pointandclick;
+package visual;
 
 import java.awt.Color;
 import java.awt.Font;
