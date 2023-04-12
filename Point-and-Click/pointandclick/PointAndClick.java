@@ -31,19 +31,11 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class PointAndClick implements Runnable, ActionListener
 {
-  static final String EXIT = "Exit";
 
   protected static final String ABOUT = "About";
   JFrame frame;
 
-<<<<<<< Upstream, based on branch 'master' of https://github.com/ande28em/CS349-Point-and-Click.git
-  /**
-   * @param args - command line arguments.
-   */
-  public PointAndClick(final String[] args)
-=======
   public PointAndClick(String[] args)
->>>>>>> d7d3c7c Creating an about button (trial)
   {
     // TODO
   }
@@ -70,7 +62,7 @@ public class PointAndClick implements Runnable, ActionListener
     menu = new JMenu("File");
     menuBar.add(menu);
 
-    JMenuItem exit = new JMenuItem(EXIT);
+    JMenuItem exit = new JMenuItem("Exit");
     exit.addActionListener(this);
     menu.add(exit);
 
@@ -82,10 +74,6 @@ public class PointAndClick implements Runnable, ActionListener
     exit.setAccelerator(quitKey);
 
     exit.setMnemonic(KeyEvent.VK_Q); // menu must first be open
-<<<<<<< Upstream, based on branch 'master' of https://github.com/ande28em/CS349-Point-and-Click.git
-
-    frame.setSize(720, 780);
-=======
     
     Icon icon = new ImageIcon("InfoIcon.png");
     
@@ -96,8 +84,8 @@ public class PointAndClick implements Runnable, ActionListener
     contentPane.add(button1);
 
     frame.setSize(400, 250);
->>>>>>> d7d3c7c Creating an about button (trial)
     contentPane.setBackground(Color.GRAY);
+    // menuBar.setBackground(Color.GRAY);
     frame.setBackground(Color.GRAY);
 
     frame.setVisible(true);
@@ -119,11 +107,7 @@ public class PointAndClick implements Runnable, ActionListener
 
     // code I wrote for another of my projects; to be edited to fit this one later
 
-<<<<<<< Upstream, based on branch 'master' of https://github.com/ande28em/CS349-Point-and-Click.git
-    if (actionCommand.equals(EXIT))
-=======
     if (actionCommand.equals("Exit"))
->>>>>>> d7d3c7c Creating an about button (trial)
     {
 
       System.exit(0);
@@ -131,16 +115,6 @@ public class PointAndClick implements Runnable, ActionListener
       return;
     }
 
-<<<<<<< Upstream, based on branch 'master' of https://github.com/ande28em/CS349-Point-and-Click.git
-    // if (actionCommand.equals(RECIPE))
-    // {
-    //
-    // RecipeEditor.main(null);
-    //
-    // return;
-    // }
-    //
-=======
     if (actionCommand.equals(ABOUT))
     {
       String about = "Point & click adventure game revolving around the user attempting to pass the CS349 final exam.\n"
@@ -151,7 +125,6 @@ public class PointAndClick implements Runnable, ActionListener
       return;
     }
 
->>>>>>> d7d3c7c Creating an about button (trial)
     // if (actionCommand.equals(CALCULATOR))
     // {
     //
