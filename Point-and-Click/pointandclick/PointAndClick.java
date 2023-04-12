@@ -31,11 +31,16 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class PointAndClick implements Runnable, ActionListener
 {
+  static final String EXIT = "Exit";
 
   protected static final String ABOUT = "About";
   JFrame frame;
 
-  public PointAndClick(String[] args)
+  /**
+   * @param args - command line arguments.
+   */
+  public PointAndClick(final String[] args)
+
   {
     // TODO
   }
@@ -62,7 +67,7 @@ public class PointAndClick implements Runnable, ActionListener
     menu = new JMenu("File");
     menuBar.add(menu);
 
-    JMenuItem exit = new JMenuItem("Exit");
+    JMenuItem exit = new JMenuItem(EXIT);
     exit.addActionListener(this);
     menu.add(exit);
 
@@ -74,6 +79,8 @@ public class PointAndClick implements Runnable, ActionListener
     exit.setAccelerator(quitKey);
 
     exit.setMnemonic(KeyEvent.VK_Q); // menu must first be open
+
+    frame.setSize(720, 780);
     
     Icon icon = new ImageIcon("InfoIcon.png");
     
@@ -83,9 +90,7 @@ public class PointAndClick implements Runnable, ActionListener
     button1.addActionListener(this);
     contentPane.add(button1);
 
-    frame.setSize(400, 250);
     contentPane.setBackground(Color.GRAY);
-    // menuBar.setBackground(Color.GRAY);
     frame.setBackground(Color.GRAY);
 
     frame.setVisible(true);
@@ -107,13 +112,14 @@ public class PointAndClick implements Runnable, ActionListener
 
     // code I wrote for another of my projects; to be edited to fit this one later
 
-    if (actionCommand.equals("Exit"))
+    if (actionCommand.equals(EXIT))
     {
 
       System.exit(0);
 
       return;
     }
+
 
     if (actionCommand.equals(ABOUT))
     {
@@ -125,21 +131,7 @@ public class PointAndClick implements Runnable, ActionListener
       return;
     }
 
-    // if (actionCommand.equals(CALCULATOR))
-    // {
-    //
-    // CalorieCalculatorWindow.main(null);
-    //
-    // return;
-    // }
-    //
-    // if (actionCommand.equals(CONVERTER))
-    // {
-    //
-    // UnitConverterWindow.main(null);
-    //
-    // return;
-    // }
+
 
   }
 
