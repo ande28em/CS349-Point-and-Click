@@ -7,10 +7,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.lang.reflect.InvocationTargetException;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
@@ -29,12 +33,17 @@ public class PointAndClick implements Runnable, ActionListener
 {
   static final String EXIT = "Exit";
 
+  protected static final String ABOUT = "About";
   JFrame frame;
 
+<<<<<<< Upstream, based on branch 'master' of https://github.com/ande28em/CS349-Point-and-Click.git
   /**
    * @param args - command line arguments.
    */
   public PointAndClick(final String[] args)
+=======
+  public PointAndClick(String[] args)
+>>>>>>> d7d3c7c Creating an about button (trial)
   {
     // TODO
   }
@@ -49,7 +58,7 @@ public class PointAndClick implements Runnable, ActionListener
 
     JPanel contentPane = (JPanel) frame.getContentPane();
 
-    contentPane.setLayout(new BorderLayout());
+    contentPane.setLayout(null);
 
     // Add the menu
     JMenuBar menuBar = new JMenuBar();
@@ -73,8 +82,21 @@ public class PointAndClick implements Runnable, ActionListener
     exit.setAccelerator(quitKey);
 
     exit.setMnemonic(KeyEvent.VK_Q); // menu must first be open
+<<<<<<< Upstream, based on branch 'master' of https://github.com/ande28em/CS349-Point-and-Click.git
 
     frame.setSize(720, 780);
+=======
+    
+    Icon icon = new ImageIcon("InfoIcon.png");
+    
+    JButton button1 = new JButton(icon);
+    button1.setBounds(70, 5, 100, 100);
+    button1.setActionCommand(ABOUT);
+    button1.addActionListener(this);
+    contentPane.add(button1);
+
+    frame.setSize(400, 250);
+>>>>>>> d7d3c7c Creating an about button (trial)
     contentPane.setBackground(Color.GRAY);
     frame.setBackground(Color.GRAY);
 
@@ -97,7 +119,11 @@ public class PointAndClick implements Runnable, ActionListener
 
     // code I wrote for another of my projects; to be edited to fit this one later
 
+<<<<<<< Upstream, based on branch 'master' of https://github.com/ande28em/CS349-Point-and-Click.git
     if (actionCommand.equals(EXIT))
+=======
+    if (actionCommand.equals("Exit"))
+>>>>>>> d7d3c7c Creating an about button (trial)
     {
 
       System.exit(0);
@@ -105,6 +131,7 @@ public class PointAndClick implements Runnable, ActionListener
       return;
     }
 
+<<<<<<< Upstream, based on branch 'master' of https://github.com/ande28em/CS349-Point-and-Click.git
     // if (actionCommand.equals(RECIPE))
     // {
     //
@@ -113,6 +140,18 @@ public class PointAndClick implements Runnable, ActionListener
     // return;
     // }
     //
+=======
+    if (actionCommand.equals(ABOUT))
+    {
+      String about = "Point & click adventure game revolving around the user attempting to pass the CS349 final exam.\n"
+          + "User choices will influence the overall “story” leading to a particular ending.";
+
+      JOptionPane.showMessageDialog(null, about, ABOUT, 1);
+
+      return;
+    }
+
+>>>>>>> d7d3c7c Creating an about button (trial)
     // if (actionCommand.equals(CALCULATOR))
     // {
     //
