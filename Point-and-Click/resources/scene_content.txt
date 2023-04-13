@@ -1,0 +1,15 @@
+NightBefore
+It's 9pm the night before your CS349 final taking place at 8am. Your roommates are encouraging you to go out to the bar with them. What do you do?
+Go to the bar and enjoy yourself
+Stay in and play videogames
+Study various software design patterns
+Try to go to sleep early
+NightBefore.jpg
+
+CarTrouble
+You wake up the next morning, get ready, and walk out to your car. It doesn't start. What do you do?
+Try to diagnose the issue
+Catch the next bus
+Call an Uber
+Frantically email Dr. Bernstein
+CarTrouble.jpg

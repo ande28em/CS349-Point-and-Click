@@ -50,14 +50,15 @@ public class TextContent extends AbstractTransformableContent
     Font font = new Font(Font.SANS_SERIF, Font.PLAIN, 15);
     Graphics2D g2;
     // Cast the rendering engine appropriately
-    g2 = (Graphics2D)arg0;
+    g2 = (Graphics2D) arg0;
     g2.setFont(font);
     g2.setColor(new Color(0, 0, 0, 210));
     g2.fill(this.original);
     g2.draw(this.original);
     g2.setColor(Color.WHITE);
     int yin = this.y + font.getSize();
-    for (String str : strs) {
+    for (String str : strs)
+    {
       g2.drawString(str, x, yin);
       yin += (font.getSize() + 1);
     }

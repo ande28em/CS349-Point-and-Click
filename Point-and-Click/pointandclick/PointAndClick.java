@@ -1,6 +1,5 @@
 package pointandclick;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,13 +30,14 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class PointAndClick implements Runnable, ActionListener
 {
+  protected static final String ABOUT = "About";
   static final String EXIT = "Exit";
 
-  protected static final String ABOUT = "About";
   JFrame frame;
 
   /**
-   * @param args - command line arguments.
+   * @param args
+   *          - command line arguments.
    */
   public PointAndClick(final String[] args)
 
@@ -74,16 +74,17 @@ public class PointAndClick implements Runnable, ActionListener
     KeyStroke quitKey = KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_DOWN_MASK); // works
                                                                                         // without
                                                                                         // opening
-                                                                                        // the menu
+                                                                                        // // the
+                                                                                        // menu
                                                                                         // first
     exit.setAccelerator(quitKey);
 
     exit.setMnemonic(KeyEvent.VK_Q); // menu must first be open
 
     frame.setSize(720, 780);
-    
+
     Icon icon = new ImageIcon("InfoIcon.png");
-    
+
     JButton button1 = new JButton(icon);
     button1.setBounds(70, 5, 100, 100);
     button1.setActionCommand(ABOUT);
@@ -120,18 +121,16 @@ public class PointAndClick implements Runnable, ActionListener
       return;
     }
 
-
     if (actionCommand.equals(ABOUT))
     {
-      String about = "Point & click adventure game revolving around the user attempting to pass the CS349 final exam.\n"
-          + "User choices will influence the overall “story” leading to a particular ending.";
+      String about = "Point & click adventure game revolving around " + ""
+          + "the user attempting to pass the CS349 final exam.\n"
+          + "User choices will influence the overall \"story\" leading to a particular ending.";
 
       JOptionPane.showMessageDialog(null, about, ABOUT, 1);
 
       return;
     }
-
-
 
   }
 
