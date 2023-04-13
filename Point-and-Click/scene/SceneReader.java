@@ -14,7 +14,7 @@ import resources.Marker;
 
 /**
  * SceneReader.java - Reads in the required scene information from a .txt file and populate scene
- * objects.
+ * objects. These scenes can be accessed through the Map by using the "SceneName" key.
  * 
  * This work complies with the JMU Honor Code.
  * 
@@ -57,7 +57,7 @@ public class SceneReader
           curr.setOptionC(reader.readLine());
           curr.setOptionD(reader.readLine());
           curr.setImage(parseSceneImage(reader.readLine()));
-          scenes.put(curr.getSceneName(), curr);
+          putScene(curr);
         }
       }
 
@@ -94,6 +94,42 @@ public class SceneReader
       }
     }
     return bufferedImage;
+  }
+
+  /**
+   * Get all scenes.
+   * 
+   * @return the scene map.
+   */
+  public Map<String, Scene> getAllScenes()
+  {
+    return scenes;
+  }
+
+  /**
+   * Get the scene corresponding to a given scene name.
+   * 
+   * @param sceneName
+   *          - the name of the scene to fetch.
+   * @return the scene or null.
+   */
+  public Scene getScene(final String sceneName)
+  {
+    return scenes.get(sceneName);
+  }
+
+  /**
+   * Add a given scene to the scenes map.
+   * 
+   * @param scene
+   *          - the scene to add.
+   */
+  public void putScene(final Scene scene)
+  {
+    if (scene != null)
+    {
+      scenes.put(scene.getSceneName(), scene);
+    }
   }
 
 }
