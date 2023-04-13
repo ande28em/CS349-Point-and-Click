@@ -6,13 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
-
 import javax.imageio.ImageIO;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -22,12 +19,13 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-
 import io.ResourceFinder;
+
 
 /**
  * PointAndClick.java - Main class to start the CS349 point and click game.
@@ -75,7 +73,7 @@ public class PointAndClick implements Runnable, ActionListener
   {
     this.frame = new JFrame("The Final Adventure");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+    
     contentPane = (JPanel) frame.getContentPane();
 
     contentPane.setLayout(null);
@@ -117,12 +115,13 @@ public class PointAndClick implements Runnable, ActionListener
     BufferedImage bg;
     Image bg2;
 
+    JLabel backGround = null;
     try
     {
       InputStream is = rf.findInputStream("ISAT_Entering.jpg");
       bg = ImageIO.read(is);
       bg2 = bg.getScaledInstance(720, 780, Image.SCALE_SMOOTH);
-      JLabel backGround = new JLabel(new ImageIcon(bg2));
+      backGround = new JLabel(new ImageIcon(bg2));
       backGround.setBounds(0, 0, 720, 780);
       frame.add(backGround);
     }
@@ -130,7 +129,7 @@ public class PointAndClick implements Runnable, ActionListener
     {
 
     }
-
+    
     startButton = new JButton("Start");
     startButton.setBounds(275, 600, 150, 50);
     startButton.addActionListener(this);
@@ -156,12 +155,12 @@ public class PointAndClick implements Runnable, ActionListener
     buttonC.addActionListener(this);
     contentPane.add(buttonC);
     buttonC.setVisible(false);
-
     buttonD = new JButton("First Option D");
     buttonD.setActionCommand("buttonD");
     buttonD.setBounds(360, 655, 150, 50);
     buttonD.addActionListener(this);
     contentPane.add(buttonD);
+    
     buttonD.setVisible(false);
 
     frame.setSize(720, 780);
@@ -254,7 +253,7 @@ public class PointAndClick implements Runnable, ActionListener
       buttonC.setText("next option C");
       buttonD.setText("next option D");
     }
-
+    
 
   }
 
