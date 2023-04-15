@@ -19,6 +19,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRootPane;
 import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
@@ -40,21 +41,24 @@ import io.ResourceFinder;
 public class PointAndClick implements Runnable, ActionListener
 {
   
+  SceneVisual vis;
   protected static final String ABOUT = "About";
   static final String EXIT = "Exit";
 
-
+  private static final int HEIGHT = 780;
+  private static final int WIDTH = 720;
   private static String HELP = "Help";
   private static String START = "Start";
-  private static String BUTTONA = "buttonA";
-  private static String BUTTONB = "buttonB";
-  private static String BUTTONC = "buttonC";
-  private static String BUTTOND = "buttonD";
+  private static String BUTTONA = "A";
+  private static String BUTTONB = "B";
+  private static String BUTTONC = "C";
+  private static String BUTTOND = "D";
   private JButton startButton;
   private JButton buttonA;
   private JButton buttonB;
   private JButton buttonC;
   private JButton buttonD;
+  private JLabel backGround = null;
 
   JFrame frame;
   JPanel contentPane;
@@ -66,7 +70,7 @@ public class PointAndClick implements Runnable, ActionListener
   public PointAndClick(final String[] args)
 
   {
-    
+    this.vis = new SceneVisual();
   }
 
   /**
@@ -118,15 +122,14 @@ public class PointAndClick implements Runnable, ActionListener
     BufferedImage bg;
     Image bg2;
 
-    JLabel backGround = null;
     try
     {
       InputStream is = rf.findInputStream("ISAT_Entering.jpg");
       bg = ImageIO.read(is);
-      bg2 = bg.getScaledInstance(720, 780, Image.SCALE_SMOOTH);
+      bg2 = bg.getScaledInstance(WIDTH, HEIGHT, Image.SCALE_SMOOTH);
       backGround = new JLabel(new ImageIcon(bg2));
-      backGround.setBounds(0, 0, 720, 780);
-      frame.add(backGround);
+      backGround.setBounds(0, 0, WIDTH, HEIGHT);
+      contentPane.add(backGround);
     }
     catch (IOException e)
     {
@@ -137,32 +140,34 @@ public class PointAndClick implements Runnable, ActionListener
     startButton.setBounds(275, 600, 150, 50);
     startButton.addActionListener(this);
     contentPane.add(startButton);
-//    vis.setBounds(1, 135, 600, 665);
-//    contentPane.add(vis);
+    vis.setBounds(1, HEIGHT * 3/4, WIDTH * 2/ 3, HEIGHT / 4);
+    contentPane.add(vis);
+    vis.setVisible(false);
 
-    buttonA = new JButton("First Option A");
-    buttonA.setActionCommand("buttonA");
-    buttonA.setBounds(200, 600, 150, 50);
+    
+    buttonA = new JButton("A");
+    buttonA.setActionCommand("A");
+    buttonA.setBounds(WIDTH * 2 / 3, HEIGHT * 3/4, 125, 75);
     buttonA.addActionListener(this);
     contentPane.add(buttonA);
     buttonA.setVisible(false);
 
-    buttonB = new JButton("First Option B");
-    buttonB.setActionCommand("buttonB");
-    buttonB.setBounds(360, 600, 150, 50);
+    buttonB = new JButton("B");
+    buttonB.setActionCommand("B");
+    buttonB.setBounds((WIDTH * 2 / 3) + 125, HEIGHT * 3/4, 125, 75);
     buttonB.addActionListener(this);
     contentPane.add(buttonB);
     buttonB.setVisible(false);
 
-    buttonC = new JButton("First Option C");
-    buttonC.setActionCommand("buttonC");
-    buttonC.setBounds(200, 655, 150, 50);
+    buttonC = new JButton("C");
+    buttonC.setActionCommand("C");
+    buttonC.setBounds(WIDTH * 2 / 3, (HEIGHT * 3/4)+ 75, 125, 75);
     buttonC.addActionListener(this);
     contentPane.add(buttonC);
     buttonC.setVisible(false);
-    buttonD = new JButton("First Option D");
-    buttonD.setActionCommand("buttonD");
-    buttonD.setBounds(360, 655, 150, 50);
+    buttonD = new JButton("D");
+    buttonD.setActionCommand("D");
+    buttonD.setBounds((WIDTH * 2 / 3) + 125, (HEIGHT * 3/4) + 75, 125, 75);
     buttonD.addActionListener(this);
     contentPane.add(buttonD);
     buttonD.setVisible(false);
@@ -215,11 +220,33 @@ public class PointAndClick implements Runnable, ActionListener
     if (actionCommand.equals(START))
     {
       startButton.setVisible(false);
+      ResourceFinder rf = ResourceFinder.createInstance(new resources.Marker());
 
+      BufferedImage bg;
+      Image bg2;
+      
+      
+      
+      try
+      {
+        contentPane.remove(backGround);
+        InputStream is = rf.findInputStream("ClassroomScene.jpg");
+        bg = ImageIO.read(is);
+        bg2 = bg.getScaledInstance(WIDTH, HEIGHT, Image.SCALE_SMOOTH);
+        backGround = new JLabel(new ImageIcon(bg2));
+        backGround.setBounds(0, 0, WIDTH, HEIGHT * 3 / 4);     
+        contentPane.add(backGround);
+        contentPane.repaint();
+      }
+      catch (IOException e)
+      {
+
+      }
       buttonA.setVisible(true);
       buttonB.setVisible(true);
       buttonC.setVisible(true);
       buttonD.setVisible(true);
+      vis.setVisible(true);
 
     }
 
