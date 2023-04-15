@@ -24,6 +24,8 @@ import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+
+import gui.SceneVisual;
 import io.ResourceFinder;
 
 
@@ -37,6 +39,7 @@ import io.ResourceFinder;
  */
 public class PointAndClick implements Runnable, ActionListener
 {
+  
   protected static final String ABOUT = "About";
   static final String EXIT = "Exit";
 
@@ -63,7 +66,7 @@ public class PointAndClick implements Runnable, ActionListener
   public PointAndClick(final String[] args)
 
   {
-    // TODO
+    
   }
 
   /**
@@ -75,9 +78,9 @@ public class PointAndClick implements Runnable, ActionListener
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     
     contentPane = (JPanel) frame.getContentPane();
-
+    
     contentPane.setLayout(null);
-
+    
     // Add the menu
     JMenuBar menuBar = new JMenuBar();
     frame.setJMenuBar(menuBar);
@@ -134,6 +137,8 @@ public class PointAndClick implements Runnable, ActionListener
     startButton.setBounds(275, 600, 150, 50);
     startButton.addActionListener(this);
     contentPane.add(startButton);
+//    vis.setBounds(1, 135, 600, 665);
+//    contentPane.add(vis);
 
     buttonA = new JButton("First Option A");
     buttonA.setActionCommand("buttonA");
@@ -160,8 +165,8 @@ public class PointAndClick implements Runnable, ActionListener
     buttonD.setBounds(360, 655, 150, 50);
     buttonD.addActionListener(this);
     contentPane.add(buttonD);
-    
     buttonD.setVisible(false);
+    
 
     frame.setSize(720, 780);
 
