@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import javax.swing.JTextArea;
 
+import observer.SceneObserver;
 import scene.Scene;
 
 public class SceneVisual extends JTextArea implements SceneObserver
@@ -21,8 +22,12 @@ public class SceneVisual extends JTextArea implements SceneObserver
   public SceneVisual()
   {
     super();
-    setBackground(new Color(0, 0, 0, 210));
+    setBackground(new Color(0, 0, 0, 200));
+    setForeground(Color.white);
     setEditable(false);
+    setLineWrap(true);
+    setWrapStyleWord(true);
+    
   }
 
   @Override
@@ -36,10 +41,10 @@ public class SceneVisual extends JTextArea implements SceneObserver
   {
     reset();
     append(s.getPrompt() + "\n\n");
-    append("A:" + s.getOptionA() + "\n");
-    append("B:" + s.getOptionB() + "\n");
-    append("C:" + s.getOptionC() + "\n");
-    append("D:" + s.getOptionD() + "\n");
+    append("A. " + s.getOptionA() + "\n");
+    append("B. " + s.getOptionB() + "\n");
+    append("C. " + s.getOptionC() + "\n");
+    append("D. " + s.getOptionD() + "\n");
   }
   
 }

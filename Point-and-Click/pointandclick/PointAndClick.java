@@ -1,5 +1,4 @@
 package pointandclick;
-
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -9,6 +8,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Map;
+
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -28,6 +29,8 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import gui.SceneVisual;
 import io.ResourceFinder;
+import scene.Scene;
+import scene.SceneReader;
 
 
 /**
@@ -40,11 +43,8 @@ import io.ResourceFinder;
  */
 public class PointAndClick implements Runnable, ActionListener
 {
-  
-  SceneVisual vis;
   protected static final String ABOUT = "About";
   static final String EXIT = "Exit";
-
   private static final int HEIGHT = 780;
   private static final int WIDTH = 720;
   private static String HELP = "Help";
@@ -59,7 +59,8 @@ public class PointAndClick implements Runnable, ActionListener
   private JButton buttonC;
   private JButton buttonD;
   private JLabel backGround = null;
-
+  private Scene scene;
+  private SceneVisual vis;
   JFrame frame;
   JPanel contentPane;
 
@@ -70,7 +71,7 @@ public class PointAndClick implements Runnable, ActionListener
   public PointAndClick(final String[] args)
 
   {
-    this.vis = new SceneVisual();
+    this.vis = new SceneVisual();  
   }
 
   /**
@@ -78,6 +79,8 @@ public class PointAndClick implements Runnable, ActionListener
    */
   public void init()
   {
+    SceneReader reader = new SceneReader();
+    scene = reader.getScene("NightBefore");
     this.frame = new JFrame("The Final Adventure");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     
@@ -147,33 +150,33 @@ public class PointAndClick implements Runnable, ActionListener
     
     buttonA = new JButton("A");
     buttonA.setActionCommand("A");
-    buttonA.setBounds(WIDTH * 2 / 3, HEIGHT * 3/4, 125, 75);
+    buttonA.setBounds(WIDTH * 2 / 3, HEIGHT * 3/4, 115, 70);
     buttonA.addActionListener(this);
     contentPane.add(buttonA);
     buttonA.setVisible(false);
 
     buttonB = new JButton("B");
     buttonB.setActionCommand("B");
-    buttonB.setBounds((WIDTH * 2 / 3) + 125, HEIGHT * 3/4, 125, 75);
+    buttonB.setBounds((WIDTH * 2 / 3) + 115, HEIGHT * 3/4, 115, 70);
     buttonB.addActionListener(this);
     contentPane.add(buttonB);
     buttonB.setVisible(false);
 
     buttonC = new JButton("C");
     buttonC.setActionCommand("C");
-    buttonC.setBounds(WIDTH * 2 / 3, (HEIGHT * 3/4)+ 75, 125, 75);
+    buttonC.setBounds(WIDTH * 2 / 3, (HEIGHT * 3/4)+ 70, 115, 70);
     buttonC.addActionListener(this);
     contentPane.add(buttonC);
     buttonC.setVisible(false);
     buttonD = new JButton("D");
     buttonD.setActionCommand("D");
-    buttonD.setBounds((WIDTH * 2 / 3) + 125, (HEIGHT * 3/4) + 75, 125, 75);
+    buttonD.setBounds((WIDTH * 2 / 3) + 115, (HEIGHT * 3/4) + 70, 115, 70);
     buttonD.addActionListener(this);
     contentPane.add(buttonD);
     buttonD.setVisible(false);
     
 
-    frame.setSize(720, 780);
+    frame.setSize(WIDTH, HEIGHT);
 
 
     contentPane.setBackground(Color.GRAY);
@@ -220,28 +223,7 @@ public class PointAndClick implements Runnable, ActionListener
     if (actionCommand.equals(START))
     {
       startButton.setVisible(false);
-      ResourceFinder rf = ResourceFinder.createInstance(new resources.Marker());
-
-      BufferedImage bg;
-      Image bg2;
-      
-      
-      
-      try
-      {
-        contentPane.remove(backGround);
-        InputStream is = rf.findInputStream("ClassroomScene.jpg");
-        bg = ImageIO.read(is);
-        bg2 = bg.getScaledInstance(WIDTH, HEIGHT, Image.SCALE_SMOOTH);
-        backGround = new JLabel(new ImageIcon(bg2));
-        backGround.setBounds(0, 0, WIDTH, HEIGHT * 3 / 4);     
-        contentPane.add(backGround);
-        contentPane.repaint();
-      }
-      catch (IOException e)
-      {
-
-      }
+      loadScene(scene);
       buttonA.setVisible(true);
       buttonB.setVisible(true);
       buttonC.setVisible(true);
@@ -252,41 +234,45 @@ public class PointAndClick implements Runnable, ActionListener
 
     if (actionCommand.equals(BUTTONA))
     {
-
-      buttonA.setText("next option A");
-      buttonB.setText("next option B");
-      buttonC.setText("next option C");
-      buttonD.setText("next option D");
+      //scene = getNextScene(scene, 'A');
+      
+      loadScene(scene);
+      
     }
 
     if (actionCommand.equals(BUTTONB))
     {
 
-      buttonA.setText("next option A");
-      buttonB.setText("next option B");
-      buttonC.setText("next option C");
-      buttonD.setText("next option D");
+      //scene = getNextScene(scene, 'B');
+      loadScene(scene);
     }
 
     if (actionCommand.equals(BUTTONC))
     {
 
-      buttonA.setText("next option A");
-      buttonB.setText("next option B");
-      buttonC.setText("next option C");
-      buttonD.setText("next option D");
+      //scene = getNextScene(scene, 'C');
+      loadScene(scene);
     }
 
     if (actionCommand.equals(BUTTOND))
     {
 
-      buttonA.setText("next option A");
-      buttonB.setText("next option B");
-      buttonC.setText("next option C");
-      buttonD.setText("next option D");
+      //scene = getNextScene(scene, 'D');
+      loadScene(scene);
     }
     
 
+  }
+  
+  public void loadScene(Scene scene) {
+    
+    contentPane.remove(backGround);
+    backGround = new JLabel(new ImageIcon(scene.getImage().getScaledInstance(WIDTH, HEIGHT, Image.SCALE_SMOOTH)));
+    backGround.setBounds(0, 0, WIDTH, HEIGHT * 3 / 4);     
+    contentPane.add(backGround);
+    vis.reset();
+    vis.handleScene(scene);
+    contentPane.repaint();
   }
 
   @Override
