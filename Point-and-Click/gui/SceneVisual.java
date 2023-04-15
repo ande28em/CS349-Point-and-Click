@@ -28,15 +28,18 @@ public class SceneVisual extends JTextArea implements SceneObserver
   @Override
   public void reset()
   {
-    // TODO Auto-generated method stub
-    
+    setText("");
   }
 
   @Override
   public void handleScene(Scene s)
   {
-    // TODO Auto-generated method stub
-    
+    reset();
+    append(s.getPrompt() + "\n\n");
+    append("A:" + s.getOptionA() + "\n");
+    append("B:" + s.getOptionB() + "\n");
+    append("C:" + s.getOptionC() + "\n");
+    append("D:" + s.getOptionD() + "\n");
   }
   
 }
