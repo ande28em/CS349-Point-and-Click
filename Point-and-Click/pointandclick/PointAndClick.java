@@ -140,7 +140,7 @@ public class PointAndClick implements Runnable, ActionListener
     }
     
     startButton = new JButton("Start");
-    startButton.setBounds(275, 600, 150, 50);
+    startButton.setBounds((WIDTH / 2) - 75, (HEIGHT / 2) , 150, 50);
     startButton.addActionListener(this);
     contentPane.add(startButton);
     vis.setBounds(1, HEIGHT * 3/4, WIDTH * 2/ 3, HEIGHT / 4);
