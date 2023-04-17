@@ -18,9 +18,9 @@ public interface SceneObserver
   public void reset();
   
   /**
-  * Add the given WeatherDatum to the collection if it is non-null.
+  * Handler for scene. 
   *
-  * @param datum the datum to add to the collection.
+  * @param s - the scene to handle. 
   */
   public void handleScene(final Scene s);
 }

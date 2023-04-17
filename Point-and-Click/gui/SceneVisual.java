@@ -7,8 +7,17 @@ import javax.swing.JTextArea;
 import observer.SceneObserver;
 import scene.Scene;
 
+/**
+ * SceneVisual.java - Creates the visualization for scene options.
+ * 
+ * This work complies with the JMU Honor Code.
+ * 
+ * @author Joseph Hicks
+ * @version Apr 16, 2023
+ */
 public class SceneVisual extends JTextArea implements SceneObserver
 {
+  public static final String NEWLINE = "\n";
 
   /**
    * 
@@ -37,14 +46,14 @@ public class SceneVisual extends JTextArea implements SceneObserver
   }
 
   @Override
-  public void handleScene(Scene s)
+  public void handleScene(final Scene s)
   {
     reset();
     append(s.getPrompt() + "\n\n");
-    append("A. " + s.getOptionA() + "\n");
-    append("B. " + s.getOptionB() + "\n");
-    append("C. " + s.getOptionC() + "\n");
-    append("D. " + s.getOptionD() + "\n");
+    append("A. " + s.getOptionA() + NEWLINE);
+    append("B. " + s.getOptionB() + NEWLINE);
+    append("C. " + s.getOptionC() + NEWLINE);
+    append("D. " + s.getOptionD() + NEWLINE);
   }
   
 }

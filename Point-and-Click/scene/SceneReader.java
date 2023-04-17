@@ -26,7 +26,12 @@ public class SceneReader
   private static final String FILENAME = "scene_content.txt";
   private static final String FAILREAD = "Failed to read ";
   private static final String PERIOD = ".";
+  private static final String A = "A";
+  private static final String B = "B";
+  private static final String C = "C";
+  private static final String D = "D";
   private Map<String, Scene> scenes;
+  private Map<Scene, String[]> nextScenes;
   private BufferedReader reader;
   private ResourceFinder finder;
 
@@ -36,6 +41,7 @@ public class SceneReader
   public SceneReader()
   {
     scenes = new HashMap<String, Scene>();
+    nextScenes = new HashMap<Scene, String[]>();
 
     // Read in FILENAME
     finder = ResourceFinder.createInstance(new Marker());
@@ -50,14 +56,31 @@ public class SceneReader
         Scene curr = new Scene();
         if (!line.isBlank()) // Another scene to be read
         {
+          String[] futureScenes = new String[4];
+
           curr.setSceneName(line);
           curr.setPrompt(reader.readLine());
+
+          // A
           curr.setOptionA(reader.readLine());
+          futureScenes[0] = reader.readLine();
+
+          // B
           curr.setOptionB(reader.readLine());
+          futureScenes[1] = reader.readLine();
+
+          // C
           curr.setOptionC(reader.readLine());
+          futureScenes[2] = reader.readLine();
+
+          // D
           curr.setOptionD(reader.readLine());
+          futureScenes[3] = reader.readLine();
+
           curr.setImage(parseSceneImage(reader.readLine()));
           putScene(curr);
+          nextScenes.put(curr, futureScenes);
+
         }
       }
 
@@ -130,6 +153,39 @@ public class SceneReader
     {
       scenes.put(scene.getSceneName(), scene);
     }
+  }
+
+  /**
+   * Get the next scene based off of the user selection on the current scene.
+   * 
+   * @param curr
+   *          - current scene.
+   * @param choice
+   *          - the letter of the option selected.
+   * @return the next scene based off the selected option.
+   */
+  public Scene getNextScene(final Scene curr, final String choice)
+  {
+    Scene result = null;
+    switch (choice)
+    {
+      case A:
+        result = scenes.get(nextScenes.get(curr)[0]);
+        break;
+      case B:
+        result = scenes.get(nextScenes.get(curr)[1]);
+        break;
+      case C:
+        result = scenes.get(nextScenes.get(curr)[2]);
+        break;
+      case D:
+        result = scenes.get(nextScenes.get(curr)[3]);
+        break;
+      default:
+        result = null;
+        break;
+    }
+    return result;
   }
 
 }

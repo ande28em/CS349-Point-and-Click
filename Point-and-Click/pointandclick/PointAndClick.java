@@ -1,4 +1,5 @@
 package pointandclick;
+
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -8,8 +9,6 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Map;
-
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -20,8 +19,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JRootPane;
-import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -31,7 +28,6 @@ import gui.SceneVisual;
 import io.ResourceFinder;
 import scene.Scene;
 import scene.SceneReader;
-
 
 /**
  * PointAndClick.java - Main class to start the CS349 point and click game.
@@ -53,6 +49,7 @@ public class PointAndClick implements Runnable, ActionListener
   private static String BUTTONB = "B";
   private static String BUTTONC = "C";
   private static String BUTTOND = "D";
+  private SceneReader sceneReader;
   private JButton startButton;
   private JButton buttonA;
   private JButton buttonB;
@@ -61,8 +58,8 @@ public class PointAndClick implements Runnable, ActionListener
   private JLabel backGround = null;
   private Scene scene;
   private SceneVisual vis;
-  JFrame frame;
-  JPanel contentPane;
+  private JFrame frame;
+  private JPanel contentPane;
 
   /**
    * @param args
@@ -71,7 +68,7 @@ public class PointAndClick implements Runnable, ActionListener
   public PointAndClick(final String[] args)
 
   {
-    this.vis = new SceneVisual();  
+    this.vis = new SceneVisual();
   }
 
   /**
@@ -79,15 +76,15 @@ public class PointAndClick implements Runnable, ActionListener
    */
   public void init()
   {
-    SceneReader reader = new SceneReader();
-    scene = reader.getScene("NightBefore");
+    sceneReader = new SceneReader();
+    scene = sceneReader.getScene("NightBefore");
     this.frame = new JFrame("The Final Adventure");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    
+
     contentPane = (JPanel) frame.getContentPane();
-    
+
     contentPane.setLayout(null);
-    
+
     // Add the menu
     JMenuBar menuBar = new JMenuBar();
     frame.setJMenuBar(menuBar);
@@ -102,12 +99,7 @@ public class PointAndClick implements Runnable, ActionListener
     exit.addActionListener(this);
     menu.add(exit);
 
-    KeyStroke quitKey = KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_DOWN_MASK); // works
-                                                                                        // without
-                                                                                        // opening
-                                                                                        // // the
-                                                                                        // menu
-                                                                                        // first
+    KeyStroke quitKey = KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_DOWN_MASK);
     exit.setAccelerator(quitKey);
 
     exit.setMnemonic(KeyEvent.VK_Q); // menu must first be open
@@ -133,51 +125,49 @@ public class PointAndClick implements Runnable, ActionListener
       backGround = new JLabel(new ImageIcon(bg2));
       backGround.setBounds(0, 0, WIDTH, HEIGHT);
       contentPane.add(backGround);
+      // backGround.setVisible(false); // Compatibility for background bug on Ubuntu
     }
     catch (IOException e)
     {
 
     }
-    
-    startButton = new JButton("Start");
-    startButton.setBounds((WIDTH / 2) - 75, (HEIGHT / 2) , 150, 50);
+
+    startButton = new JButton(START);
+    startButton.setBounds((WIDTH / 2) - 75, (HEIGHT / 2), 150, 50);
     startButton.addActionListener(this);
     contentPane.add(startButton);
-    vis.setBounds(1, HEIGHT * 3/4, WIDTH * 2/ 3, HEIGHT / 4);
+    vis.setBounds(1, HEIGHT * 3 / 4, WIDTH * 2 / 3, HEIGHT / 4);
     contentPane.add(vis);
     vis.setVisible(false);
 
-    
-    buttonA = new JButton("A");
-    buttonA.setActionCommand("A");
-    buttonA.setBounds(WIDTH * 2 / 3, HEIGHT * 3/4, 115, 70);
+    buttonA = new JButton(BUTTONA);
+    buttonA.setActionCommand(BUTTONA);
+    buttonA.setBounds(WIDTH * 2 / 3, HEIGHT * 3 / 4, 115, 70);
     buttonA.addActionListener(this);
     contentPane.add(buttonA);
     buttonA.setVisible(false);
 
-    buttonB = new JButton("B");
-    buttonB.setActionCommand("B");
-    buttonB.setBounds((WIDTH * 2 / 3) + 115, HEIGHT * 3/4, 115, 70);
+    buttonB = new JButton(BUTTONB);
+    buttonB.setActionCommand(BUTTONB);
+    buttonB.setBounds((WIDTH * 2 / 3) + 115, HEIGHT * 3 / 4, 115, 70);
     buttonB.addActionListener(this);
     contentPane.add(buttonB);
     buttonB.setVisible(false);
 
-    buttonC = new JButton("C");
-    buttonC.setActionCommand("C");
-    buttonC.setBounds(WIDTH * 2 / 3, (HEIGHT * 3/4)+ 70, 115, 70);
+    buttonC = new JButton(BUTTONC);
+    buttonC.setActionCommand(BUTTONC);
+    buttonC.setBounds(WIDTH * 2 / 3, (HEIGHT * 3 / 4) + 70, 115, 70);
     buttonC.addActionListener(this);
     contentPane.add(buttonC);
     buttonC.setVisible(false);
-    buttonD = new JButton("D");
-    buttonD.setActionCommand("D");
-    buttonD.setBounds((WIDTH * 2 / 3) + 115, (HEIGHT * 3/4) + 70, 115, 70);
+    buttonD = new JButton(BUTTOND);
+    buttonD.setActionCommand(BUTTOND);
+    buttonD.setBounds((WIDTH * 2 / 3) + 115, (HEIGHT * 3 / 4) + 70, 115, 70);
     buttonD.addActionListener(this);
     contentPane.add(buttonD);
     buttonD.setVisible(false);
-    
 
     frame.setSize(WIDTH, HEIGHT);
-
 
     contentPane.setBackground(Color.GRAY);
     frame.setBackground(Color.GRAY);
@@ -218,7 +208,6 @@ public class PointAndClick implements Runnable, ActionListener
       return;
     }
 
-
     // can only be pressed once per iteration
     if (actionCommand.equals(START))
     {
@@ -234,44 +223,49 @@ public class PointAndClick implements Runnable, ActionListener
 
     if (actionCommand.equals(BUTTONA))
     {
-      //scene = getNextScene(scene, 'A');
-      
+      scene = sceneReader.getNextScene(scene, BUTTONA);
       loadScene(scene);
-      
     }
 
     if (actionCommand.equals(BUTTONB))
     {
 
-      //scene = getNextScene(scene, 'B');
+      scene = sceneReader.getNextScene(scene, BUTTONB);
       loadScene(scene);
     }
 
     if (actionCommand.equals(BUTTONC))
     {
 
-      //scene = getNextScene(scene, 'C');
+      scene = sceneReader.getNextScene(scene, BUTTONC);
       loadScene(scene);
     }
 
     if (actionCommand.equals(BUTTOND))
     {
 
-      //scene = getNextScene(scene, 'D');
+      scene = sceneReader.getNextScene(scene, BUTTOND);
       loadScene(scene);
     }
-    
 
   }
-  
-  public void loadScene(Scene scene) {
-    
+
+  /**
+   * Loads a scene with images and options.
+   * 
+   * @param sceneSwitch
+   *          - the scene to load.
+   */
+  public void loadScene(final Scene sceneSwitch)
+  {
+
     contentPane.remove(backGround);
-    backGround = new JLabel(new ImageIcon(scene.getImage().getScaledInstance(WIDTH, HEIGHT, Image.SCALE_SMOOTH)));
-    backGround.setBounds(0, 0, WIDTH, HEIGHT * 3 / 4);     
+    backGround = new JLabel(
+        new ImageIcon(sceneSwitch.getImage().getScaledInstance(WIDTH, HEIGHT, Image.SCALE_SMOOTH)));
+    backGround.setBounds(0, 0, WIDTH, HEIGHT * 3 / 4);
     contentPane.add(backGround);
     vis.reset();
-    vis.handleScene(scene);
+    vis.handleScene(sceneSwitch);
     contentPane.repaint();
   }
 
