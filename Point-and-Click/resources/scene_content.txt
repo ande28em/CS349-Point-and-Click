@@ -21,3 +21,63 @@ NightBefore
 Frantically email Dr. Bernstein
 NightBefore
 CarTrouble.jpg
+
+ClassroomScene
+You've made it to class just in time! You as Dr. Bernstein passes out the test you start to panic as you decided to go to that show of "Breaking Bad on Ice" instead of studying last night.
+Give the Exam your best try.
+winScene
+Copy off the person next to you.
+loseScene1
+Attempt to bribe Dr. Bernstein.
+loseScene2
+Pretend to go to the bathroom but instead leave college to pursue your dreams of being a hand model.
+loseScene3
+ClassroomScene.jpg
+
+winScene
+You passed the Exam by two points, better than you thought you'd do. You Win!
+Try again.
+ClassroomScene
+Try again.
+ClassroomScene
+Try again.
+ClassroomScene
+Try again.
+ClassroomScene
+ClassroomScene.jpg
+
+loseScene1
+Dr. Bernstein catches you mid peek and discretely ushers you out of the room by throwing you through the window. You Lose.
+Try again.
+ClassroomScene
+Try again.
+ClassroomScene
+Try again.
+ClassroomScene
+Try again.
+ClassroomScene
+HallwayScene.jpg
+
+loseScene2
+Your attempt to pay your teacher off is unsuccessful, he takes your test away and fails you on the spot. You lose.
+Try again.
+ClassroomScene
+Try again.
+ClassroomScene
+Try again.
+ClassroomScene
+Try again.
+ClassroomScene
+ClassroomScene.jpg
+
+loseScene3
+You decide to live out your dreams and end up becoming America's #1 hand model, however this game is about taking a computer science exam so... you lose.
+Try again.
+ClassroomScene
+Try again.
+ClassroomScene
+Try again.
+ClassroomScene
+Try again.
+ClassroomScene
+ISAT_Leaving.jpg

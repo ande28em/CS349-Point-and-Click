@@ -77,10 +77,10 @@ public class PointAndClick implements Runnable, ActionListener
   public void init()
   {
     sceneReader = new SceneReader();
-    scene = sceneReader.getScene("NightBefore");
+    scene = sceneReader.getScene("ClassroomScene");
     this.frame = new JFrame("The Final Adventure");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+    frame.setResizable(false);
     contentPane = (JPanel) frame.getContentPane();
 
     contentPane.setLayout(null);
