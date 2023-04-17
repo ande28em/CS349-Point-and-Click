@@ -71,7 +71,7 @@ ClassroomScene
 ClassroomScene.jpg
 
 loseScene3
-You decide to live out your dreams and end up becoming America's #1 hand model, however this game is about taking a computer science exam so... you lose.
+You decide to live out your dreams and end up becoming America's #1 hand model, however this game is about taking a computer science exam... you lose.
 Try again.
 ClassroomScene
 Try again.
