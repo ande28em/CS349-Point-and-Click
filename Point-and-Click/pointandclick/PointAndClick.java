@@ -76,14 +76,24 @@ public class PointAndClick implements Runnable, ActionListener
    */
   public void init()
   {
+
     sceneReader = new SceneReader();
     scene = sceneReader.getScene("ClassroomScene");
     this.frame = new JFrame("The Final Adventure");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setResizable(false);
     contentPane = (JPanel) frame.getContentPane();
-
     contentPane.setLayout(null);
+
+    // Set look and feel for different OS (Fixes start invisible on Ubuntu)
+    try
+    {
+      UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+    }
+    catch (Exception e)
+    {
+      e.printStackTrace();
+    }
 
     // Add the menu
     JMenuBar menuBar = new JMenuBar();
@@ -125,7 +135,6 @@ public class PointAndClick implements Runnable, ActionListener
       backGround = new JLabel(new ImageIcon(bg2));
       backGround.setBounds(0, 0, WIDTH, HEIGHT);
       contentPane.add(backGround);
-      // backGround.setVisible(false); // Compatibility for background bug on Ubuntu
     }
     catch (IOException e)
     {
