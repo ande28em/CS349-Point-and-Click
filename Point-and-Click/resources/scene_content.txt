@@ -23,7 +23,7 @@ NightBefore
 CarTrouble.jpg
 
 ClassroomScene
-You've made it to class just in time! You as Dr. Bernstein passes out the test you start to panic as you decided to go to that show of "Breaking Bad on Ice" instead of studying last night.
+You've made it to class just in time! You as Dr. Bernstein passes out the test you start to panic as you decided to go out instead of studying last night.
 Give the Exam your best try.
 winScene
 Copy off the person next to you.
