@@ -19,6 +19,7 @@ public class Scene
   private String optionC;
   private String optionD;
   private BufferedImage image;
+  private boolean isEnd;
 
   /**
    * Default constructor.
@@ -53,7 +54,8 @@ public class Scene
    *          - the image to display for the scene.
    */
   public Scene(final String sceneName, final String prompt, final String optionA,
-      final String optionB, final String optionC, final String optionD, final BufferedImage image)
+      final String optionB, final String optionC, final String optionD, final boolean isEnd,
+      final BufferedImage image)
   {
     this.sceneName = sceneName;
     this.prompt = prompt;
@@ -61,6 +63,7 @@ public class Scene
     this.optionB = optionB;
     this.optionC = optionC;
     this.optionD = optionD;
+    this.isEnd = isEnd;
     this.image = image;
   }
 
@@ -121,6 +124,14 @@ public class Scene
   }
 
   /**
+   * @return isEnd
+   */
+  public boolean isEnd()
+  {
+    return isEnd;
+  }
+  
+  /**
    * @param sceneName
    *          the sceneName to set
    */
@@ -172,6 +183,15 @@ public class Scene
   public void setOptionD(final String optionD)
   {
     this.optionD = optionD;
+  }
+  
+  /**
+   * @param isEnd
+   *          bool value determines end scene.
+   */
+  public void setEnd(final boolean isEnd)
+  {
+    this.isEnd = isEnd;
   }
 
   /**

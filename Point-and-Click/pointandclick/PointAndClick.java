@@ -28,6 +28,11 @@ import gui.SceneVisual;
 import io.ResourceFinder;
 import scene.Scene;
 import scene.SceneReader;
+import visual.ScaledVisualizationRenderer;
+import visual.VisualizationView;
+import visual.dynamic.sampled.Screen;
+import visual.statik.SimpleContent;
+import visual.statik.sampled.ContentFactory;
 
 /**
  * PointAndClick.java - Main class to start the CS349 point and click game.
@@ -45,12 +50,14 @@ public class PointAndClick implements Runnable, ActionListener
   private static final int WIDTH = 720;
   private static String HELP = "Help";
   private static String START = "Start";
+  private static String RESTART = "Restart";
   private static String BUTTONA = "A";
   private static String BUTTONB = "B";
   private static String BUTTONC = "C";
   private static String BUTTOND = "D";
   private SceneReader sceneReader;
   private JButton startButton;
+  private JButton restartButton;
   private JButton buttonA;
   private JButton buttonB;
   private JButton buttonC;
@@ -60,6 +67,10 @@ public class PointAndClick implements Runnable, ActionListener
   private SceneVisual vis;
   private JFrame frame;
   private JPanel contentPane;
+  private boolean isEnd = false;
+  private Screen screen1;
+  private VisualizationView view1;
+  
 
   /**
    * @param args
@@ -78,7 +89,6 @@ public class PointAndClick implements Runnable, ActionListener
   {
 
     sceneReader = new SceneReader();
-    scene = sceneReader.getScene("ClassroomScene");
     this.frame = new JFrame("The Final Adventure");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setResizable(false);
@@ -145,6 +155,13 @@ public class PointAndClick implements Runnable, ActionListener
     startButton.setBounds((WIDTH / 2) - 75, (HEIGHT / 2), 150, 50);
     startButton.addActionListener(this);
     contentPane.add(startButton);
+    
+    restartButton = new JButton(RESTART);
+    restartButton.setBounds((WIDTH / 2) - 75, (HEIGHT / 2), 150, 50);
+    restartButton.addActionListener(this);
+    contentPane.add(restartButton);
+    restartButton.setVisible(false);
+    
     vis.setBounds(1, HEIGHT * 3 / 4, WIDTH * 2 / 3, HEIGHT / 4);
     contentPane.add(vis);
     vis.setVisible(false);
@@ -175,13 +192,34 @@ public class PointAndClick implements Runnable, ActionListener
     buttonD.addActionListener(this);
     contentPane.add(buttonD);
     buttonD.setVisible(false);
-
+    
+    //
+    screen1 = new Screen(15);
+    screen1.setRepeating(true);
+    view1 = screen1.getView();
+    view1.setRenderer(new ScaledVisualizationRenderer(view1.getRenderer(),
+        500.0, 500.0));
+    view1.setBounds((WIDTH / 2) - (WIDTH / 2), (HEIGHT * 3 / 4) - 520,WIDTH, HEIGHT);
+    String[] names = rf.loadResourceNames("vortex.txt");
+    ContentFactory factory = new ContentFactory(rf);
+    SimpleContent[] frames1 = factory.createContents(names, 4);
+    for (int i=0; i<frames1.length; i++)
+    {
+      screen1.add(frames1[i]);
+    }
+    view1.setOpaque(false);
+    view1.setVisible(false);
+    //contentPane.setBounds(0,0,100,100);
+    //contentPane.add(view1);
+    //
+    
     frame.setSize(WIDTH, HEIGHT);
 
-    contentPane.setBackground(Color.GRAY);
-    frame.setBackground(Color.GRAY);
+    contentPane.setBackground(Color.BLACK);
+    frame.setBackground(Color.BLACK);
 
     frame.setVisible(true);
+    
 
     contentPane.setVisible(true);
   }
@@ -221,6 +259,7 @@ public class PointAndClick implements Runnable, ActionListener
     if (actionCommand.equals(START))
     {
       startButton.setVisible(false);
+      scene = sceneReader.getScene("Scene1");
       loadScene(scene);
       buttonA.setVisible(true);
       buttonB.setVisible(true);
@@ -228,6 +267,16 @@ public class PointAndClick implements Runnable, ActionListener
       buttonD.setVisible(true);
       vis.setVisible(true);
 
+    }
+    
+    if (actionCommand.equals(RESTART))
+    {
+      isEnd = false;
+      restartButton.setVisible(false);
+      vis.setVisible(false);
+      scene = sceneReader.getScene("Menu");
+      loadScene(scene);
+      startButton.setVisible(true);
     }
 
     if (actionCommand.equals(BUTTONA))
@@ -238,7 +287,7 @@ public class PointAndClick implements Runnable, ActionListener
 
     if (actionCommand.equals(BUTTONB))
     {
-
+      
       scene = sceneReader.getNextScene(scene, BUTTONB);
       loadScene(scene);
     }
@@ -271,8 +320,30 @@ public class PointAndClick implements Runnable, ActionListener
     contentPane.remove(backGround);
     backGround = new JLabel(
         new ImageIcon(sceneSwitch.getImage().getScaledInstance(WIDTH, HEIGHT, Image.SCALE_SMOOTH)));
-    backGround.setBounds(0, 0, WIDTH, HEIGHT * 3 / 4);
+    
+    if (sceneSwitch.getSceneName().equals("Menu")) {
+      backGround.setBounds(0, 0, WIDTH, HEIGHT);
+    } else {
+      backGround.setBounds(0, 0, WIDTH, HEIGHT * 3 / 4);
+    }
+    
     contentPane.add(backGround);
+    
+    isEnd = scene.isEnd();
+    if (isEnd) {
+      buttonA.setVisible(false);
+      buttonB.setVisible(false);
+      buttonC.setVisible(false);
+      buttonD.setVisible(false);
+      restartButton.setVisible(true);
+//      view1.setVisible(true);
+//      screen1.start();
+      
+    } else {
+      view1.setVisible(false);
+      screen1.stop();
+    }
+    
     vis.reset();
     vis.handleScene(sceneSwitch);
     contentPane.repaint();
