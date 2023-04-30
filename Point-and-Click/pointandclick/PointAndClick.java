@@ -24,6 +24,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import audio.Soundtrack;
 import gui.SceneVisual;
 import io.ResourceFinder;
 import scene.Scene;
@@ -48,6 +49,7 @@ public class PointAndClick implements Runnable, ActionListener
   static final String EXIT = "Exit";
   private static final int HEIGHT = 740;
   private static final int WIDTH = 700;
+  private static final String MENU = "Menu";
   private static String HELP = "Help";
   private static String START = "Start";
   private static String RESTART = "Restart";
@@ -70,7 +72,6 @@ public class PointAndClick implements Runnable, ActionListener
   private boolean isEnd = false;
   private Screen screen1;
   private VisualizationView view1;
-  
 
   /**
    * @param args
@@ -100,9 +101,10 @@ public class PointAndClick implements Runnable, ActionListener
     {
       UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
     }
-    catch (Exception e)
+    catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+        | UnsupportedLookAndFeelException e1)
     {
-      e.printStackTrace();
+      e1.printStackTrace();
     }
 
     // Add the menu
@@ -155,13 +157,13 @@ public class PointAndClick implements Runnable, ActionListener
     startButton.setBounds((WIDTH / 2) - 75, (HEIGHT / 2), 150, 50);
     startButton.addActionListener(this);
     contentPane.add(startButton);
-    
+
     restartButton = new JButton(RESTART);
     restartButton.setBounds((WIDTH / 2) - 75, (HEIGHT / 2), 150, 50);
     restartButton.addActionListener(this);
     contentPane.add(restartButton);
     restartButton.setVisible(false);
-    
+
     vis.setBounds(1, HEIGHT * 3 / 4, WIDTH * 2 / 3, HEIGHT / 4);
     contentPane.add(vis);
     vis.setVisible(false);
@@ -192,36 +194,38 @@ public class PointAndClick implements Runnable, ActionListener
     buttonD.addActionListener(this);
     contentPane.add(buttonD);
     buttonD.setVisible(false);
-    
+
     //
     screen1 = new Screen(50);
     screen1.setRepeating(true);
     view1 = screen1.getView();
-    view1.setRenderer(new ScaledVisualizationRenderer(view1.getRenderer(),
-        600.0, 1200.0));
-    view1.setBounds(WIDTH * 2 / 3, HEIGHT * 3 / 4,200, 400);
+    view1.setRenderer(new ScaledVisualizationRenderer(view1.getRenderer(), 600.0, 1200.0));
+    view1.setBounds(WIDTH * 2 / 3, HEIGHT * 3 / 4, 200, 400);
     String[] names = rf.loadResourceNames("vortex.txt");
     ContentFactory factory = new ContentFactory(rf);
     SimpleContent[] frames1 = factory.createContents(names, 4);
-    for (int i=0; i<frames1.length; i++)
+    for (int i = 0; i < frames1.length; i++)
     {
       screen1.add(frames1[i]);
     }
     view1.setOpaque(false);
     view1.setVisible(false);
-    contentPane.setBounds(0,0,100,100);
+    contentPane.setBounds(0, 0, 100, 100);
     contentPane.add(view1);
     //
-    
+
     frame.setSize(WIDTH, HEIGHT);
 
     contentPane.setBackground(Color.BLACK);
     frame.setBackground(Color.BLACK);
 
     frame.setVisible(true);
-    
 
     contentPane.setVisible(true);
+
+    // Audio
+    Soundtrack track = new Soundtrack("chill-abstract-intention.wav");
+    track.init();
   }
 
   /**
@@ -268,13 +272,13 @@ public class PointAndClick implements Runnable, ActionListener
       vis.setVisible(true);
 
     }
-    
+
     if (actionCommand.equals(RESTART))
     {
       isEnd = false;
       restartButton.setVisible(false);
       vis.setVisible(false);
-      scene = sceneReader.getScene("Menu");
+      scene = sceneReader.getScene(MENU);
       loadScene(scene);
       startButton.setVisible(true);
     }
@@ -287,7 +291,7 @@ public class PointAndClick implements Runnable, ActionListener
 
     if (actionCommand.equals(BUTTONB))
     {
-      
+
       scene = sceneReader.getNextScene(scene, BUTTONB);
       loadScene(scene);
     }
@@ -320,17 +324,21 @@ public class PointAndClick implements Runnable, ActionListener
     contentPane.remove(backGround);
     backGround = new JLabel(
         new ImageIcon(sceneSwitch.getImage().getScaledInstance(WIDTH, HEIGHT, Image.SCALE_SMOOTH)));
-    
-    if (sceneSwitch.getSceneName().equals("Menu")) {
+
+    if (sceneSwitch.getSceneName().equals(MENU))
+    {
       backGround.setBounds(0, 0, WIDTH, HEIGHT);
-    } else {
+    }
+    else
+    {
       backGround.setBounds(0, 0, WIDTH, HEIGHT * 3 / 4);
     }
-    
+
     contentPane.add(backGround);
-    
+
     isEnd = scene.isEnd();
-    if (isEnd) {
+    if (isEnd)
+    {
       buttonA.setVisible(false);
       buttonB.setVisible(false);
       buttonC.setVisible(false);
@@ -338,12 +346,14 @@ public class PointAndClick implements Runnable, ActionListener
       restartButton.setVisible(true);
       view1.setVisible(true);
       screen1.start();
-      
-    } else {
+
+    }
+    else
+    {
       view1.setVisible(false);
       screen1.stop();
     }
-    
+
     vis.reset();
     vis.handleScene(sceneSwitch);
     contentPane.repaint();
@@ -352,7 +362,6 @@ public class PointAndClick implements Runnable, ActionListener
   @Override
   public void run()
   {
-    // TODO Auto-generated method stub
     try
     {
       String style = UIManager.getSystemLookAndFeelClassName();

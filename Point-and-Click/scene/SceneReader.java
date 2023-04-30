@@ -76,14 +76,17 @@ public class SceneReader
           // D
           curr.setOptionD(reader.readLine());
           futureScenes[3] = reader.readLine();
-          
+
           String isEnd = reader.readLine();
-          if (isEnd.equals("False")) {
+          if (isEnd.equals("False"))
+          {
             curr.setEnd(false);
-          } else {
+          }
+          else
+          {
             curr.setEnd(true);
           }
-          
+
           curr.setImage(parseSceneImage(reader.readLine()));
           putScene(curr);
           nextScenes.put(curr, futureScenes);

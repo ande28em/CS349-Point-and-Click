@@ -52,6 +52,8 @@ public class Scene
    *          - Fourth option for the user to select.
    * @param image
    *          - the image to display for the scene.
+   * @param isEnd
+   *          - true if it is an ending scene.
    */
   public Scene(final String sceneName, final String prompt, final String optionA,
       final String optionB, final String optionC, final String optionD, final boolean isEnd,
@@ -130,7 +132,7 @@ public class Scene
   {
     return isEnd;
   }
-  
+
   /**
    * @param sceneName
    *          the sceneName to set
@@ -184,14 +186,14 @@ public class Scene
   {
     this.optionD = optionD;
   }
-  
+
   /**
-   * @param isEnd
-   *          bool value determines end scene.
+   * @param isEndScene
+   *          - bool value determines end scene.
    */
-  public void setEnd(final boolean isEnd)
+  public void setEnd(final boolean isEndScene)
   {
-    this.isEnd = isEnd;
+    this.isEnd = isEndScene;
   }
 
   /**
