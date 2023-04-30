@@ -10,7 +10,6 @@ none
 none
 False
 ISAT_Entering.jpg
-
 NightBefore
 It's 9pm the night before your CS349 final taking place at 8am. Your roommates are encouraging you to go out to the bar with them. What do you do?
 Go to the bar and enjoy yourself
@@ -23,7 +22,6 @@ Try to go to sleep early
 CarTrouble
 False
 NightBefore.jpg
-
 CarTrouble
 You wake up the next morning, get ready, and walk out to your car. It doesn't start. What do you do?
 Try to diagnose the issue
@@ -36,7 +34,6 @@ Frantically email Dr. Bernstein
 NightBefore
 False
 CarTrouble.jpg
-
 CarRepair
 After a thorough examination you realize that the trouble with your car is far beyond your comprehension and ability to fix. You look at the time and notice that the exam has ended, you fail.
 
@@ -49,7 +46,6 @@ After a thorough examination you realize that the trouble with your car is far b
 
 true
 CarRepair.jpg
-
 Scene1
 You've made it to class just in time! As Dr. Bernstein passes out the test you start to panic because you didn't study very well. What do you do?
 Give the Exam your best try.
@@ -62,7 +58,6 @@ Pretend to go to the bathroom but instead leave college to pursue your dreams of
 loseScene3
 False
 ClassroomScene.jpg
-
 winScene
 You passed the Exam by two points, better than you thought you'd do. You Win!
 
@@ -75,7 +70,6 @@ You passed the Exam by two points, better than you thought you'd do. You Win!
 
 True
 ClassroomScene.jpg
-
 loseScene1
 Dr. Bernstein catches you mid peek and discretely ushers you out of the room by throwing you through the window. You Lose.
 
@@ -88,7 +82,6 @@ Dr. Bernstein catches you mid peek and discretely ushers you out of the room by 
 
 True
 HallwayScene.jpg
-
 loseScene2
 Your attempt to pay your teacher off is unsuccessful, he takes your test away and fails you on the spot. You lose.
 
@@ -101,7 +94,6 @@ Your attempt to pay your teacher off is unsuccessful, he takes your test away an
 
 
 ClassroomScene.jpg
-
 loseScene3
 You decide to live out your dreams and end up becoming America's #1 hand model, however this game is about taking a computer science exam... you lose.
 
