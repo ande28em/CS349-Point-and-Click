@@ -46,6 +46,42 @@ You realize that the trouble with your car is far beyond your comprehension and 
 
 True
 CarRepair.jpg
+TakeBus
+You successfully find a bus to take you to class, however there is traffic and you are running out of time. What do you do?
+Stay on the bus and wait patiently
+BusArrive
+Get off the bus and run to class
+Scene1
+Email DR. Bernstein and explain the situation
+BusArrive
+Ask the bus driver to drive faster
+BusArrive
+False
+TakeBus.jpg
+BusArrive
+The traffic clears up and you arrive at ISAT with time to spare. What do you do?
+Go straight to class
+Scene1
+Get Food
+FoodSeeker
+Study some more before the test starts
+Scene1
+Take a nap
+looseScene4
+False
+BusArrive.jpg
+FoodSeeker
+You decide to go to festival to alleviate your hunger, however while eating you lose track of time and miss the exam. You lose.
+
+
+
+
+
+
+
+
+True
+FoodSeeker.jpg
 Scene1
 You've made it to class just in time! As Dr. Bernstein passes out the test you start to panic because you didn't study very well. What do you do?
 Give the Exam your best try.
@@ -96,6 +132,18 @@ Your attempt to pay your teacher off is unsuccessful, he takes your test away an
 ClassroomScene.jpg
 loseScene3
 You decide to live out your dreams and end up becoming America's #1 hand model, however this game is about taking a computer science exam... you lose.
+
+
+
+
+
+
+
+
+True
+ISAT_Leaving.jpg
+loseScene4
+You awaken only to find that your alarm did not go off and that you have over slept and missed the exam. You lose.
 
 
 
