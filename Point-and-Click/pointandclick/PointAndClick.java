@@ -259,7 +259,7 @@ public class PointAndClick implements Runnable, ActionListener
     if (actionCommand.equals(START))
     {
       startButton.setVisible(false);
-      scene = sceneReader.getScene("Scene1");
+      scene = sceneReader.getScene("NightBefore");
       loadScene(scene);
       buttonA.setVisible(true);
       buttonB.setVisible(true);
