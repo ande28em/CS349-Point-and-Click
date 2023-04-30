@@ -38,7 +38,7 @@ False
 CarTrouble.jpg
 
 CarRepair
-After a thorough examination you realize that the trouble with your car is far beyond your comprehension and ability to fix. You look at the time and notice that the exam has ended, you fail.
+You realize that the trouble with your car is far beyond your comprehension and ability to fix. You look at the time and notice that the exam has ended, you fail.
 
 
 
@@ -47,8 +47,21 @@ After a thorough examination you realize that the trouble with your car is far b
 
 
 
-true
+True
 CarRepair.jpg
+
+TakeBus
+You successfully find a bus to take you to class, however there is traffic and you are running out of time. What do you do?.
+
+
+
+
+
+
+
+
+False
+TakeBus.jpg
 
 Scene1
 You've made it to class just in time! As Dr. Bernstein passes out the test you start to panic because you didn't study very well. What do you do?
