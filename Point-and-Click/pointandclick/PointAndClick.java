@@ -46,8 +46,8 @@ public class PointAndClick implements Runnable, ActionListener
 {
   protected static final String ABOUT = "About";
   static final String EXIT = "Exit";
-  private static final int HEIGHT = 780;
-  private static final int WIDTH = 720;
+  private static final int HEIGHT = 740;
+  private static final int WIDTH = 700;
   private static String HELP = "Help";
   private static String START = "Start";
   private static String RESTART = "Restart";
@@ -194,12 +194,12 @@ public class PointAndClick implements Runnable, ActionListener
     buttonD.setVisible(false);
     
     //
-    screen1 = new Screen(15);
+    screen1 = new Screen(50);
     screen1.setRepeating(true);
     view1 = screen1.getView();
     view1.setRenderer(new ScaledVisualizationRenderer(view1.getRenderer(),
-        500.0, 500.0));
-    view1.setBounds((WIDTH / 2) - (WIDTH / 2), (HEIGHT * 3 / 4) - 520,WIDTH, HEIGHT);
+        600.0, 1200.0));
+    view1.setBounds(WIDTH * 2 / 3, HEIGHT * 3 / 4,200, 400);
     String[] names = rf.loadResourceNames("vortex.txt");
     ContentFactory factory = new ContentFactory(rf);
     SimpleContent[] frames1 = factory.createContents(names, 4);
@@ -209,8 +209,8 @@ public class PointAndClick implements Runnable, ActionListener
     }
     view1.setOpaque(false);
     view1.setVisible(false);
-    //contentPane.setBounds(0,0,100,100);
-    //contentPane.add(view1);
+    contentPane.setBounds(0,0,100,100);
+    contentPane.add(view1);
     //
     
     frame.setSize(WIDTH, HEIGHT);
@@ -336,8 +336,8 @@ public class PointAndClick implements Runnable, ActionListener
       buttonC.setVisible(false);
       buttonD.setVisible(false);
       restartButton.setVisible(true);
-//      view1.setVisible(true);
-//      screen1.start();
+      view1.setVisible(true);
+      screen1.start();
       
     } else {
       view1.setVisible(false);

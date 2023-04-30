@@ -81,7 +81,7 @@ You decide to go to festival to alleviate your hunger, however while eating you 
 
 
 True
-FoodSeeker.jpg
+BusArrive.jpg
 Scene1
 You've made it to class just in time! As Dr. Bernstein passes out the test you start to panic because you didn't study very well. What do you do?
 Give the Exam your best try.
@@ -128,7 +128,7 @@ Your attempt to pay your teacher off is unsuccessful, he takes your test away an
 
 
 
-
+True
 ClassroomScene.jpg
 loseScene3
 You decide to live out your dreams and end up becoming America's #1 hand model, however this game is about taking a computer science exam... you lose.
