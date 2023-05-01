@@ -1,5 +1,6 @@
 package audio;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -50,7 +51,7 @@ public class Soundtrack
     AudioInputStream stream;
     try
     {
-      stream = AudioSystem.getAudioInputStream(is);
+      stream = AudioSystem.getAudioInputStream(new BufferedInputStream(is));
 
       AudioFormat format = stream.getFormat();
 
