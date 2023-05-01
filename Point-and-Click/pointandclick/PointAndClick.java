@@ -47,8 +47,8 @@ public class PointAndClick implements Runnable, ActionListener
 {
   protected static final String ABOUT = "About";
   static final String EXIT = "Exit";
-  private static final int HEIGHT = 740;
-  private static final int WIDTH = 700;
+  private static final int HEIGHT = 770;
+  private static final int WIDTH = 720;
   private static final String MENU = "Menu";
   private static String HELP = "Help";
   private static String START = "Start";
@@ -199,9 +199,10 @@ public class PointAndClick implements Runnable, ActionListener
     screen1 = new Screen(50);
     screen1.setRepeating(true);
     view1 = screen1.getView();
-    view1.setRenderer(new ScaledVisualizationRenderer(view1.getRenderer(), 600.0, 1200.0));
-    view1.setBounds(WIDTH * 2 / 3, HEIGHT * 3 / 4, 200, 400);
-    String[] names = rf.loadResourceNames("vortex.txt");
+    view1.setRenderer(new ScaledVisualizationRenderer(view1.getRenderer(), 650.0, 1000.0));
+   
+    view1.setBounds(WIDTH * 2 / 3, HEIGHT * 3 / 4, 300, 400);
+    String[] names = rf.loadResourceNames("laugh.txt");
     ContentFactory factory = new ContentFactory(rf);
     SimpleContent[] frames1 = factory.createContents(names, 4);
     for (int i = 0; i < frames1.length; i++)

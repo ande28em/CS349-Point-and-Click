@@ -50,10 +50,12 @@ public class SceneVisual extends JTextArea implements SceneObserver
   {
     reset();
     append(s.getPrompt() + "\n\n");
-    append("A. " + s.getOptionA() + NEWLINE);
-    append("B. " + s.getOptionB() + NEWLINE);
-    append("C. " + s.getOptionC() + NEWLINE);
-    append("D. " + s.getOptionD() + NEWLINE);
+    if (!s.isEnd()) {
+      append("A. " + s.getOptionA() + NEWLINE);
+      append("B. " + s.getOptionB() + NEWLINE);
+      append("C. " + s.getOptionC() + NEWLINE);
+      append("D. " + s.getOptionD() + NEWLINE);
+    }
   }
   
 }

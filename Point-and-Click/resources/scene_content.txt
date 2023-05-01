@@ -81,7 +81,7 @@ You decide to go to festival to alleviate your hunger, however while eating you 
 
 
 True
-BusArrive.jpg
+FoodSeeker.jpg
 Scene1
 You've made it to class just in time! As Dr. Bernstein passes out the test you start to panic because you didn't study very well. What do you do?
 Give the Exam your best try.
