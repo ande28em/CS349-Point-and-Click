@@ -35,7 +35,7 @@ NightBefore
 False
 CarTrouble.jpg
 CarRepair
-You realize that the trouble with your car is far beyond your comprehension and ability to fix. You look at the time and notice that the exam has ended, you fail.
+After thoroughly attempting to fix the car, you realize that the problem is far beyond your comprehension and ability to fix. You look at the time and notice that the exam has ended, you fail.
 
 
 
@@ -51,13 +51,61 @@ You successfully find a bus to take you to class, however there is traffic and y
 Stay on the bus and wait patiently
 BusArrive
 Get off the bus and run to class
-Scene1
+Running
 Email DR. Bernstein and explain the situation
 BusArrive
 Ask the bus driver to drive faster
 BusArrive
 False
 TakeBus.jpg
+Running
+After exiting the bus, you begin running to ISAT, but you begin to tire. What do you do?
+Take a short break and admire nature
+NatureScene
+Try to cut the distance by running across streets without waiting for cross walks 
+HitByCar
+Run faster to get there early then buy drinks and snacks from vending to refresh before the test
+VendingScene
+Persevere through the exertion and maintain your current pace to arrive right on time
+Scene1
+False
+Running.jpg
+NatureScene
+While stopping to catch your breath, you admire the blooming spring flora. Unbeknownst to you, a bee from the plant sneaks up on you and stings your neck triggering your allergies and killing you. You lose.
+
+
+
+
+
+
+
+
+True
+Nature_Distraction.jpg
+HitByCar
+While recklessly crossing streets to reach ISAT faster, you were hit by a car and die. You lose.
+
+
+
+
+
+
+
+
+True
+HitByCar.jpg
+VendingScene
+Upon arriving a little early after running, you head to ISAT vending to get some refreshments before the exam. What do you choose?
+Beef Jerky
+Scene1
+Cheddar Combos
+Scene1
+Uncrustable PB & J with Naked smoothie
+Scene1
+POP Tart and milk
+Scene1
+False
+VendingScene.jpg
 BusArrive
 The traffic clears up and you arrive at ISAT with time to spare. What do you do?
 Go straight to class
