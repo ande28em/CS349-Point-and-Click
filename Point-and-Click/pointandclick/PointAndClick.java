@@ -141,7 +141,7 @@ public class PointAndClick implements Runnable, ActionListener
 
     try
     {
-      InputStream is = rf.findInputStream("ISAT_Entering.jpg");
+      InputStream is = rf.findInputStream("BernsteinHall.png");
       bg = ImageIO.read(is);
       bg2 = bg.getScaledInstance(WIDTH, HEIGHT, Image.SCALE_SMOOTH);
       backGround = new JLabel(new ImageIcon(bg2));

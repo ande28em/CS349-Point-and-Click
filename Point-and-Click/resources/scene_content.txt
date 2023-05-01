@@ -9,7 +9,7 @@ none
 none
 none
 False
-ISAT_Entering.jpg
+BernsteinHall.png
 NightBefore
 It's 9pm the night before your CS349 final taking place at 8am. Your roommates are encouraging you to go out to the bar with them. What do you do?
 Go to the bar and enjoy yourself
