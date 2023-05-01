@@ -115,7 +115,7 @@ FoodSeeker
 Study some more before the test starts
 Scene1
 Take a nap
-looseScene4
+loseScene4
 False
 BusArrive.jpg
 FoodSeeker
