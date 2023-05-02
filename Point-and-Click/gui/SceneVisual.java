@@ -23,7 +23,7 @@ public class SceneVisual extends JTextArea implements SceneObserver
    * 
    */
   private static final long serialVersionUID = 1L;
-  
+
   /**
    * Default constructor for WeatherBoard object.
    *
@@ -36,7 +36,7 @@ public class SceneVisual extends JTextArea implements SceneObserver
     setEditable(false);
     setLineWrap(true);
     setWrapStyleWord(true);
-    
+
   }
 
   @Override
@@ -50,12 +50,13 @@ public class SceneVisual extends JTextArea implements SceneObserver
   {
     reset();
     append(s.getPrompt() + "\n\n");
-    if (!s.isEnd()) {
+    if (!s.isEnd())
+    {
       append("A. " + s.getOptionA() + NEWLINE);
       append("B. " + s.getOptionB() + NEWLINE);
       append("C. " + s.getOptionC() + NEWLINE);
       append("D. " + s.getOptionD() + NEWLINE);
     }
   }
-  
+
 }
